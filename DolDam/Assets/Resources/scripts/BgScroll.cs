@@ -22,12 +22,14 @@ public class BgScroll : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        bg1.transform.Translate(new Vector2(0, -Time.deltaTime * gm.GetScrollSpeed()));
-        Debug.Log(Screen.height / pixToUnit);
-        bg2.transform.Translate(new Vector2(0, -Time.deltaTime * gm.GetScrollSpeed()));
-        if (bg1.transform.position.y < -screenHeight)
-            bg1.transform.Translate(new Vector2(0, screenHeight * 2));
-        if (bg2.transform.position.y < -screenHeight)
-            bg2.transform.Translate(new Vector2(0, screenHeight * 2));
+        if (gm.gameState == GameManager.GameState.PLAYING)
+        {
+            bg1.transform.Translate(new Vector2(0, -Time.deltaTime * gm.GetScrollSpeed()));
+            bg2.transform.Translate(new Vector2(0, -Time.deltaTime * gm.GetScrollSpeed()));
+            if (bg1.transform.position.y < -screenHeight)
+                bg1.transform.Translate(new Vector2(0, screenHeight * 2));
+            if (bg2.transform.position.y < -screenHeight)
+                bg2.transform.Translate(new Vector2(0, screenHeight * 2));
+        }
     }
 }

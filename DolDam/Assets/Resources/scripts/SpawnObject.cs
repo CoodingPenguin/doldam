@@ -21,11 +21,14 @@ public class SpawnObject : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        eTime += Time.deltaTime;
-        if(spawnTime<=eTime)
+        if (GameManager.instance.gameState == GameManager.GameState.PLAYING)
         {
-            eTime -= spawnTime;
-            SpawnObstacle(obstacle1);
+            eTime += Time.deltaTime;
+            if (spawnTime <= eTime)
+            {
+                eTime -= spawnTime;
+                SpawnObstacle(obstacle1);
+            }
         }
 	}
     void SpawnObstacle(GameObject ob)
@@ -34,7 +37,6 @@ public class SpawnObject : MonoBehaviour {
         float pixToUnit = sr.sprite.pixelsPerUnit;
         float width = sr.sprite.rect.width / pixToUnit;
         float height = sr.sprite.rect.height / pixToUnit;
-        Debug.Log(-screenWidth / 2 + width / 2);
         GameObject spOb= Instantiate(ob,
             new Vector2(Random.Range(-screenWidth / 2 + width/2, screenWidth / 2 - width / 2), screenHeight/2+height / 2), 
             Quaternion.identity);

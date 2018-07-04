@@ -9,6 +9,7 @@ public class ObstacleScroll : MonoBehaviour {
     private float pixToUnit;
     private float width;
     private float height;
+    private bool isHit;
 	// Use this for initialization
 	void Awake ()
     {
@@ -17,13 +18,25 @@ public class ObstacleScroll : MonoBehaviour {
         pixToUnit = GetComponent<SpriteRenderer>().sprite.pixelsPerUnit;
         width = sr.sprite.rect.width / pixToUnit;
         height = sr.sprite.rect.height / pixToUnit;
-        Debug.Log(pixToUnit);
+        isHit = false;
     }
 	
 	// Update is called once per frame
 	void Update () {
-        transform.Translate(new Vector2(0, -Time.deltaTime * gm.GetScrollSpeed()));
-        if (transform.position.y + height/2< -Screen.height / 2 / pixToUnit)
-            Destroy(gameObject);
+        if (gm.gameState == GameManager.GameState.PLAYING)
+        {
+            transform.Translate(new Vector2(0, -Time.deltaTime * gm.GetScrollSpeed()));
+            if (transform.position.y + height / 2 < -Screen.height / 2 / pixToUnit)
+                Destroy(gameObject);
+        }
+    }
+
+    public void HitByPlayer()
+    {
+        isHit = true;
+    }
+    public bool GetIsHit()
+    {
+        return isHit;
     }
 }
