@@ -7,9 +7,9 @@ public class PlayerMove : MonoBehaviour {
 
     private float moveSpeed = 5f;
     private float rotSpeed = 90f;
-    private float scaleSpeed = 0.1f;
+    private float scaleSpeed = 0.2f;
     private float rollSpeed = 1f;
-    private float ballScale = 1f;
+    private float ballScale = 5f;
     public int dir;
     public int beforeDir;
 
@@ -30,7 +30,7 @@ public class PlayerMove : MonoBehaviour {
             SetScale(ballScale + scaleSpeed * Time.deltaTime * GameManager.instance.GetScrollSpeed() / 10f);
             if (Input.GetMouseButton(0))
             {
-                if (!EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
+                if (!EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))   //pc테스트시 주석처리
                 {
                     if (Input.mousePosition.x < Screen.width / 2)
                     {
@@ -54,7 +54,7 @@ public class PlayerMove : MonoBehaviour {
             }
             if (Input.GetMouseButtonDown(0))
             {
-                if (!EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
+                if (!EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))   //pc테스트시 주석처리
                 {
                     if (Input.mousePosition.y > Screen.height / 3 * 2)
                     {
@@ -99,7 +99,7 @@ public class PlayerMove : MonoBehaviour {
 
     void SetScale(float scale)
     {
-        if (scale <= 0.1)
+        if (scale <= 2f)
             return;
         ballScale = scale;
         transform.localScale = new Vector2(ballScale, ballScale);
