@@ -4,30 +4,41 @@ using UnityEngine;
 
 public class SpawnObject : MonoBehaviour {
 
-    public float spawnTime = 1f;
-    public GameObject obstacle1;
+    public float wallSpawnTime = 2f;
+    private float wallETime = 0f;
+    public GameObject wall;
+    public float snowmanSpawnTime = 2f;
+    private float snowmanETime = 1f;
+    public GameObject snowman;
 
-    private float eTime = 0f;
     private float screenWidth;
     private float screenHeight;
     private float pixToUnit;
 
 	// Use this for initialization
 	void Start () {
-        pixToUnit = obstacle1.GetComponent<SpriteRenderer>().sprite.pixelsPerUnit;
+        pixToUnit = wall.GetComponent<SpriteRenderer>().sprite.pixelsPerUnit;
         screenHeight = Screen.height / pixToUnit;
         screenWidth = Screen.width / pixToUnit;
-    }
+        snowmanSpawnTime = 2f;
+        wallSpawnTime = 2f;
+}
 	
 	// Update is called once per frame
 	void Update () {
         if (GameManager.instance.gameState == GameManager.GameState.PLAYING)
         {
-            eTime += Time.deltaTime;
-            if (spawnTime <= eTime)
+            wallETime += Time.deltaTime;
+            if (wallSpawnTime <= wallETime)
             {
-                eTime -= spawnTime;
-                SpawnObstacle(obstacle1);
+                wallETime -= wallSpawnTime;
+                SpawnObstacle(wall);
+            }
+            snowmanETime += Time.deltaTime;
+            if (snowmanSpawnTime <= snowmanETime)
+            {
+                snowmanETime -= snowmanSpawnTime;
+                SpawnObstacle(snowman);
             }
         }
 	}

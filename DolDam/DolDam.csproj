@@ -305,6 +305,7 @@
     <Compile Include="Assets\Resources\scripts\GameManager.cs" />
     <Compile Include="Assets\Resources\scripts\Loader.cs" />
     <Compile Include="Assets\Resources\scripts\ObstacleScroll.cs" />
+    <Compile Include="Assets\Resources\scripts\ParticleScroll.cs" />
     <Compile Include="Assets\Resources\scripts\PauseButton.cs" />
     <Compile Include="Assets\Resources\scripts\PlayerMove.cs" />
     <Compile Include="Assets\Resources\scripts\SpawnObject.cs" />

@@ -276,7 +276,7 @@ Transform:
   - {fileID: 1150017147}
   - {fileID: 1468691006}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &374324125
 MonoBehaviour:
@@ -440,7 +440,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &814600302
 MonoBehaviour:
@@ -453,8 +453,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81e7e0cf329da9b4c94d4bdb54f3d8aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnTime: 1
-  obstacle1: {fileID: 1217721435354740, guid: bbe3c37a3795161439794b39f2156d59, type: 2}
+  wallSpawnTime: 1
+  wall: {fileID: 1217721435354740, guid: bbe3c37a3795161439794b39f2156d59, type: 2}
+  snowmanSpawnTime: 1
+  snowman: {fileID: 1871835562996916, guid: dec00142a8cd7874d8825d6b5a3235e0, type: 2}
 --- !u!1 &1150017145
 GameObject:
   m_ObjectHideFlags: 0
@@ -764,7 +766,7 @@ RectTransform:
   m_Children:
   - {fileID: 278953480}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -831,7 +833,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2131219072
 GameObject:
@@ -905,11 +907,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2131219072}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -3.37, z: -1}
+  m_LocalPosition: {x: 0, y: -4.7, z: -1}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2131219075
 MonoBehaviour:
@@ -922,8 +924,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5006189267cc5e64a82557b419096095, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 5
+  rotSpeed: 90
+  scaleSpeed: 0.3
+  rollSpeed: 0.1
+  ballScale: 5
   dir: 0
   beforeDir: 0
+  SnowParticle: {fileID: 1587108587300840, guid: 8f58ce00e7963b9468fe2ab1a40b0b07,
+    type: 2}
 --- !u!114 &2131219076
 MonoBehaviour:
   m_ObjectHideFlags: 0
