@@ -6,14 +6,14 @@ Dol.apk 가 실행파일입니다.
 
 
 20180708 12:39 이영진
-1.눈덩이 크기와 속도 유기적으로 변경됨
-2.앞으로 pc에서 테스트할 때 주석처리 대신 InputLeft,InputRight를 InputLeftPC,InputRightPC로 바꾸면됨(PlayerMove.MoveAndRotate())
-3.양쪽 바깥으로 못나가게 막음
-4.장애물에 부딛히면 크기가 반으로 줄고 이펙트 생김
+1.눈덩이 크기와 속도 유기적으로 변경됨  
+2.앞으로 pc에서 테스트할 때 주석처리 대신 InputLeft,InputRight를 InputLeftPC,InputRightPC로 바꾸면됨(PlayerMove.MoveAndRotate())  
+3.양쪽 바깥으로 못나가게 막음  
+4.장애물에 부딛히면 크기가 반으로 줄고 이펙트 생김  
 
 
 20180705 20:58 이영진  
-1.눈덩이 이미지 변경
+1.눈덩이 이미지 변경  
 2.앞으로 apk를 추출할 때 주석처리해야하는 부분이 있음 (PlayerMove)
 
 
