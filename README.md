@@ -2,7 +2,16 @@
 
 Doldam 폴더가 프로젝트 폴더입니다.  
 keystore암호는 doldam  
-Dol.apk 가 실행파일입니다.
+Dol.apk 가 실행파일입니다  
+모바일 빌드할 땐 GameMamager의 GameManager.testEnvironment를 MOBILE로 설정해야합니다.  
+(pc에서 테스트 할땐 PC로 설정)  
+
+
+20180714 19:23 이영진  
+1.피버모드 관련된 사항들 모두 적용함  
+2.인스펙터뷰에서 수치를 조정할 수 있도록 함  
+3.앞으로 pc에서 테스트 할 때 Hierarchy의 GameManager 오브젝트의 GameManager.testEnvironment를 pc로 하고, 모바일 빌드를 할땐 mobile로 설정함  
+4.UI는 해상도에 따라 스케일링 되도록 함  
 
 
 20180708 12:39 이영진  
