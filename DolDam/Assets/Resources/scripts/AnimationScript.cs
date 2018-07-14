@@ -9,7 +9,7 @@ public class AnimationScript : MonoBehaviour {
     public string location;
     private SpriteRenderer spr;
     private Sprite[] sprites;
-    public int frame = 0;
+    private int frame = 0;
     private float deltaTime = 0;
 
     public GameManager gameManager;

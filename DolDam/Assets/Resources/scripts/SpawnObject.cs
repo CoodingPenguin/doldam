@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class SpawnObject : MonoBehaviour {
 
-    public float wallSpawnTime = 2f;
-    private float wallETime = 0f;
+    public float wallSpawnDis = 50f;
+    private float wallEDis = 0f;
     public GameObject wall;
-    public float snowmanSpawnTime = 2f;
-    private float snowmanETime = 1f;
+    public float snowmanSpawnDis = 30f;
+    private float snowmanEDis = 15f;
     public GameObject snowman;
 
     private float screenWidth;
@@ -20,24 +20,25 @@ public class SpawnObject : MonoBehaviour {
         pixToUnit = wall.GetComponent<SpriteRenderer>().sprite.pixelsPerUnit;
         screenHeight = Screen.height / pixToUnit;
         screenWidth = Screen.width / pixToUnit;
-        snowmanSpawnTime = 2f;
-        wallSpawnTime = 2f;
+        snowmanSpawnDis = 30f;
+        wallSpawnDis = 30f;
 }
 	
 	// Update is called once per frame
 	void Update () {
         if (GameManager.instance.gameState == GameManager.GameState.PLAYING)
         {
-            wallETime += Time.deltaTime;
-            if (wallSpawnTime <= wallETime)
+            wallEDis += Time.deltaTime*GameManager.instance.GetScrollSpeed();
+            Debug.Log(wallEDis);
+            if (wallSpawnDis <= wallEDis)
             {
-                wallETime -= wallSpawnTime;
+                wallEDis -= wallSpawnDis;
                 SpawnObstacle(wall);
             }
-            snowmanETime += Time.deltaTime;
-            if (snowmanSpawnTime <= snowmanETime)
+            snowmanEDis += Time.deltaTime * GameManager.instance.GetScrollSpeed();
+            if (snowmanSpawnDis <= snowmanEDis)
             {
-                snowmanETime -= snowmanSpawnTime;
+                snowmanEDis -= snowmanSpawnDis;
                 SpawnObstacle(snowman);
             }
         }

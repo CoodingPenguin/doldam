@@ -354,7 +354,7 @@ Camera:
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
+  m_AllowDynamicResolution: 1
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -412,7 +412,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b8fb2e60f4f4394d926f8af29dc6b21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  feverState: 0
   gameState: 0
+  testEnvironment: 0
 --- !u!1 &814600300
 GameObject:
   m_ObjectHideFlags: 0
@@ -453,9 +455,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81e7e0cf329da9b4c94d4bdb54f3d8aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wallSpawnTime: 1
+  wallSpawnDis: 20
   wall: {fileID: 1217721435354740, guid: bbe3c37a3795161439794b39f2156d59, type: 2}
-  snowmanSpawnTime: 1
+  snowmanSpawnDis: 20
   snowman: {fileID: 1871835562996916, guid: dec00142a8cd7874d8825d6b5a3235e0, type: 2}
 --- !u!1 &1150017145
 GameObject:
@@ -505,8 +507,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 852641949
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 4de381bffe6de224f995a3c1e14e749b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -592,8 +594,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 852641949
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 4de381bffe6de224f995a3c1e14e749b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -724,12 +726,12 @@ MonoBehaviour:
   m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1080, y: 1920}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -887,8 +889,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 2143519845
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 75908f533b1814448be6e6888a77192e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -926,12 +928,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   rotSpeed: 90
-  scaleSpeed: 0.3
-  rollSpeed: 0.1
+  rollSpeed: 2
   ballScale: 5
-  dir: 0
-  beforeDir: 0
+  minScale: 2
+  scaleSpeed: 0.3
+  feverDuration: 5
+  scaleAtFever: 25
+  goToFeverScale: 14
   SnowParticle: {fileID: 1587108587300840, guid: 8f58ce00e7963b9468fe2ab1a40b0b07,
+    type: 2}
+  feverParticle: {fileID: 1872130839239442, guid: ba0d480a8e54b054cb8c32b80c90d5e2,
+    type: 2}
+  crashParticle: {fileID: 1768588464560056, guid: b6521f871348c7145a8607c2d09ba990,
+    type: 2}
+  snowmanParticle: {fileID: 1385296381576926, guid: 94e0d73fb1cefb94ba2e25e2145d771b,
     type: 2}
 --- !u!114 &2131219076
 MonoBehaviour:
@@ -947,7 +957,6 @@ MonoBehaviour:
   loop: 1
   frameSeconds: 1
   location: images/snowball2
-  frame: 0
   gameManager: {fileID: 0}
 --- !u!58 &2131219077
 CircleCollider2D:

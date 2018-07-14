@@ -10,6 +10,9 @@ public class ObstacleScroll : MonoBehaviour {
     private float width;
     private float height;
     private bool isHit;
+    private bool isFlying;
+    public Vector2 goToVec;
+    public float flySpeed=50f;
 	// Use this for initialization
 	void Awake ()
     {
@@ -19,15 +22,29 @@ public class ObstacleScroll : MonoBehaviour {
         width = sr.sprite.rect.width / pixToUnit;
         height = sr.sprite.rect.height / pixToUnit;
         isHit = false;
+        isFlying = false;
+        flySpeed = 50f;
+        
     }
 	
 	// Update is called once per frame
 	void Update () {
         if (gm.gameState == GameManager.GameState.PLAYING)
         {
-            transform.Translate(new Vector2(0, -Time.deltaTime * gm.GetScrollSpeed()));
-            if (transform.position.y + height / 2 < -Screen.height / 2 / pixToUnit)
-                Destroy(gameObject);
+            if (isFlying)
+            {
+                transform.Translate(goToVec * flySpeed*Time.deltaTime);
+                if (transform.position.x + width / 2 < -Screen.width / 2 / pixToUnit ||
+                    transform.position.x - width / 2 > Screen.width / 2 / pixToUnit ||
+                    transform.position.y - height / 2 > Screen.height / 2 / pixToUnit)
+                    Destroy(gameObject);
+            }
+            else
+            {
+                transform.Translate(new Vector2(0, -Time.deltaTime * gm.GetScrollSpeed()));
+                if (transform.position.y + height / 2 < -Screen.height / 2 / pixToUnit)
+                    Destroy(gameObject);
+            }
         }
     }
 
@@ -38,5 +55,12 @@ public class ObstacleScroll : MonoBehaviour {
     public bool GetIsHit()
     {
         return isHit;
+    }
+    public void HitAtFever()
+    {
+        float c = Random.Range(0, Mathf.PI * 2);
+        goToVec = new Vector2(Mathf.Abs(Mathf.Cos(c)) * Mathf.Sign(transform.position.x), Mathf.Abs(Mathf.Sin(c)));
+        isHit = true;
+        isFlying = true;
     }
 }

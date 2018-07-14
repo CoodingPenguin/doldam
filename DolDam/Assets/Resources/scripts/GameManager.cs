@@ -9,10 +9,18 @@ public class GameManager : MonoBehaviour {
     {
         MENU,START,PLAYING,PAUSED
     };
+    public enum TestEnvironment
+    {
+        PC,MOBILE
+    }
+
+    public int feverState = 0;
+    
 
     private float scrollSpeed = 10f;
-    private float maxSpeed = 30f;
+    private float maxSpeed = 100f;
     public GameState gameState;
+    public TestEnvironment testEnvironment;
 
 	// Use this for initialization
 	void Awake () {
