@@ -21,7 +21,7 @@ public class PlayerMove : MonoBehaviour
     public float goToFeverScale = 14f;
     private float feverETime = 0f;
 
-    private float snowManScale = 1f;
+    public float snowManScale = 1f;
 
     public GameObject SnowParticle;
     public GameObject feverParticle;
@@ -46,10 +46,10 @@ public class PlayerMove : MonoBehaviour
             {
                 SetScale(ballScale + scaleSpeed * Time.deltaTime);
                 MoveAndRotate();
-                if (ballScale >= scaleAtFever)
+                if (ballScale >= goToFeverScale)
                 {
                     GameManager.instance.feverState = 1;
-                    SetScale(scaleAtFever);
+                    SetScale(goToFeverScale);
                     GameObject p = Instantiate(feverParticle, transform.position, Quaternion.identity);
                     p.transform.localScale = p.transform.localScale * ballScale / 2;
                     Destroy(p, 2f);

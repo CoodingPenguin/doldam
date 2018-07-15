@@ -20,8 +20,6 @@ public class SpawnObject : MonoBehaviour {
         pixToUnit = wall.GetComponent<SpriteRenderer>().sprite.pixelsPerUnit;
         screenHeight = Screen.height / pixToUnit;
         screenWidth = Screen.width / pixToUnit;
-        snowmanSpawnDis = 30f;
-        wallSpawnDis = 30f;
 }
 	
 	// Update is called once per frame
