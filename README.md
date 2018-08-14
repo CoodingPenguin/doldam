@@ -1,4 +1,4 @@
-# DolDam1
+﻿# DolDam1
 
 Doldam 폴더가 프로젝트 폴더입니다.  
 keystore암호는 doldam  
@@ -37,3 +37,12 @@ Dol.apk 가 실행파일입니다
 20180702 01:47 이영진  
 1.플레이어 이동 방향키로 일단 만들었음  
 2.장애물 생성 및 충돌 만들었음  
+
+
+20180814 16:42 박소현
+1. 효과음 및 배경음 추가를 위한 SoundManager를 생성
+2. StartScene에서 Button Event를 위한 스크립트 ButtonControl작성
+3. SetUpScene에서 정수배로 효과음 및 배경음 조절가능하도록 Slider 설정
+4. 일시정지 버튼을 눌렀을 때 Resume의 경우 GameManager의 GameState를 사용해서 다시 시작하도록 함.
+하지만 Restart와 MainMenu 버튼의 경우 단순히 LoadScene으로 할 경우 GameManager와 SoundManager가 초기화가 안 되서 게임에서 오류 발생.
+(금요일 까지 수정예정)
