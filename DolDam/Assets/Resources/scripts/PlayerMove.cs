@@ -28,12 +28,25 @@ public class PlayerMove : MonoBehaviour
     public GameObject crashParticle;
     public GameObject snowmanParticle;
 
+    public AudioClip bgmSound;
+
+    public AudioClip colliSnow1;
+    public AudioClip colliSnow2;
+    public AudioClip colliSnow3;
+    public AudioClip colliWall1;
+    public AudioClip colliWall2;
+    public AudioClip colliWall3;
+    public AudioClip colliFever;
+    public AudioClip feverStart;
+    public AudioClip feverEnd;
+
 
     // Use this for initialization
     void Start()
     {
         width = GetComponent<SpriteRenderer>().sprite.rect.width / GetComponent<SpriteRenderer>().sprite.pixelsPerUnit;
         ScreenWidth = Screen.width / GetComponent<SpriteRenderer>().sprite.pixelsPerUnit;
+        SoundManager.instance.PlayBgm(bgmSound, true);
     }
 
     // Update is called once per frame
@@ -57,11 +70,13 @@ public class PlayerMove : MonoBehaviour
             }
             else if (GameManager.instance.feverState == 1)    //평상시->피버모드로 전환
             {
+                
                 transform.position = Vector2.Lerp(transform.position, new Vector2(0, transform.position.y), 7 * Time.deltaTime);
                 transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.identity, 7 * Time.deltaTime);
                 transform.localScale = Vector2.Lerp(transform.localScale, new Vector2(scaleAtFever, scaleAtFever), 7 * Time.deltaTime);
                 if (transform.localScale.x >= scaleAtFever - 1)
                 {
+                    SoundManager.instance.PlaySingle(feverStart);
                     GameManager.instance.feverState = 2;
                     transform.position = new Vector2(0, transform.position.y);
                     transform.rotation = Quaternion.identity;
@@ -76,6 +91,7 @@ public class PlayerMove : MonoBehaviour
                 feverETime += Time.deltaTime;
                 if (feverETime > feverDuration) //피버모드 종료
                 {
+                    SoundManager.instance.PlaySingle(feverEnd);
                     GameObject p = Instantiate(SnowParticle, transform.position, Quaternion.identity);
                     p.transform.localScale = p.transform.localScale * ballScale / 2.5f;
                     Destroy(p, 2f);
@@ -87,6 +103,7 @@ public class PlayerMove : MonoBehaviour
             KeepInScreen();
         }
     }
+
     void OnTriggerEnter2D(Collider2D col)
     {
         if (GameManager.instance.gameState == GameManager.GameState.PLAYING)
@@ -100,23 +117,26 @@ public class PlayerMove : MonoBehaviour
                     {
                         if (col.tag == "Snowman")
                         {
+                            SoundManager.instance.RandomizeSfx(colliSnow1, colliSnow2, colliSnow3);
                             GameObject p = Instantiate(snowmanParticle, col.transform.position, Quaternion.identity);
                             Destroy(p, 2f);
                             os.HitByPlayer();
                             SetScale(ballScale + snowManScale);
                             Destroy(col.gameObject);
-                        }
+                        } 
                         else if (col.tag == "Wall")
                         {
+                            SoundManager.instance.RandomizeSfx(colliWall1, colliWall2, colliWall3);
                             GameObject p = Instantiate(SnowParticle, col.transform.position, Quaternion.identity);
                             p.transform.localScale = p.transform.localScale * ballScale / 4;
                             Destroy(p, 2f);
                             os.HitByPlayer();
                             SetScale(ballScale / 2f);
-                        }
+                        } 
                     }
                     if (GameManager.instance.feverState == 2)
                     {
+                        SoundManager.instance.RandomizeSfx(colliFever);
                         os.HitAtFever();
                         GameObject p = Instantiate(crashParticle, col.transform.position, Quaternion.identity);
                         p.transform.localScale = p.transform.localScale *2;

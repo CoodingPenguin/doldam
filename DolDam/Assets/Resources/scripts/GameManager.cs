@@ -22,6 +22,11 @@ public class GameManager : MonoBehaviour {
     public GameState gameState;
     public TestEnvironment testEnvironment;
 
+    public AudioClip pauseSound1;
+    public AudioClip pauseSound2;
+
+    public GameObject panel;
+
 	// Use this for initialization
 	void Awake () {
         if (instance == null)
@@ -31,7 +36,8 @@ public class GameManager : MonoBehaviour {
         DontDestroyOnLoad(gameObject);
         gameState = GameState.MENU;
         gameState = GameState.PLAYING;
-        
+
+        panel.SetActive(false);
 	}
 	
 	// Update is called once per frame
@@ -52,11 +58,22 @@ public class GameManager : MonoBehaviour {
         scrollSpeed = spd;
         return true;
     }
+
     public void PauseButtonTouched()
     {
-        if (gameState != GameState.PAUSED)
+        if (gameState != GameState.PAUSED) {
+            SoundManager.instance.bgmSource.Pause();
+            SoundManager.instance.PlaySingleForBtn(pauseSound1);
             gameState = GameState.PAUSED;
+            panel.SetActive(true);
+        }
         else if (gameState == GameState.PAUSED)
+        {
+            SoundManager.instance.bgmSource.Play();
+            SoundManager.instance.PlaySingleForBtn(pauseSound2);
             gameState = GameState.PLAYING;
+            panel.SetActive(false);
+        }
+            
     }
 }
