@@ -50,8 +50,12 @@ public class PlayerMove : MonoBehaviour
         isDead = false;
 
         width = GetComponent<SpriteRenderer>().sprite.rect.width / GetComponent<SpriteRenderer>().sprite.pixelsPerUnit;
-        ScreenWidth = Screen.width / GetComponent<SpriteRenderer>().sprite.pixelsPerUnit;
+ 
+        ScreenWidth = 10.8f;
         SoundManager.instance.PlayBgm(bgmSound, true);
+        Debug.Log("width:" + width);
+        Debug.Log("swidth:" + ScreenWidth);
+
     }
 
     // Update is called once per frame
@@ -98,7 +102,6 @@ public class PlayerMove : MonoBehaviour
             {
                 MoveAndRotate();
                 SetScale(scaleAtFever);
-                Debug.Log(ballScale);
                 feverETime += Time.deltaTime;
                 if (feverETime > feverDuration) //피버모드 종료
                 {
@@ -200,7 +203,6 @@ public class PlayerMove : MonoBehaviour
 
     void KeepInScreen()
     {
-        Debug.Log(ScreenWidth);
         if (transform.position.x - width * ballScale / 2 < -ScreenWidth / 2)
             transform.position = new Vector2(width * ballScale / 2 - ScreenWidth / 2, transform.position.y);
         else if (transform.position.x + width * ballScale / 2 > ScreenWidth / 2)

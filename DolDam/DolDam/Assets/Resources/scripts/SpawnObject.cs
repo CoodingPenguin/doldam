@@ -19,8 +19,8 @@ public class SpawnObject : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         pixToUnit = wall.GetComponent<SpriteRenderer>().sprite.pixelsPerUnit;
-        screenHeight = Screen.height / pixToUnit;
-        screenWidth = Screen.width / pixToUnit;
+        screenHeight = 19.2f;
+        screenWidth = 10.8f;
 }
 	
 	// Update is called once per frame

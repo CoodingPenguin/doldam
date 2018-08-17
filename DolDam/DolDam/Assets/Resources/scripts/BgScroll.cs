@@ -16,7 +16,7 @@ public class BgScroll : MonoBehaviour {
     void Start () {
         gm=GameManager.instance;
         pixToUnit = bg1.GetComponent<SpriteRenderer>().sprite.pixelsPerUnit;
-        screenHeight = Screen.height / pixToUnit;
+        screenHeight = 19.2f;
     }
 	
 	// Update is called once per frame

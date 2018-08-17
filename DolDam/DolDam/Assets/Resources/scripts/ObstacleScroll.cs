@@ -34,15 +34,15 @@ public class ObstacleScroll : MonoBehaviour {
             if (isFlying)
             {
                 transform.Translate(goToVec * flySpeed*Time.deltaTime);
-                if (transform.position.x + width / 2 < -Screen.width / 2 / pixToUnit ||
-                    transform.position.x - width / 2 > Screen.width / 2 / pixToUnit ||
-                    transform.position.y - height / 2 > Screen.height / 2 / pixToUnit)
+                if (transform.position.x + width / 2 < -10.8f / 2  ||
+                    transform.position.x - width / 2 > 10.8f / 2 ||
+                    transform.position.y - height / 2 > 19.2f / 2 )
                     Destroy(gameObject);
             }
             else
             {
                 transform.Translate(new Vector2(0, -Time.deltaTime * gm.GetScrollSpeed()));
-                if (transform.position.y + height / 2 < -Screen.height / 2 / pixToUnit)
+                if (transform.position.y + height / 2 < -19.2f / 2 )
                     Destroy(gameObject);
             }
         }
