@@ -27,5 +27,6 @@ public class ButtonControl : MonoBehaviour {
         SoundManager.instance.bgmSource.Stop();
         SoundManager.instance.PlaySingleForBtn(startButtonSound);
         SceneManager.LoadScene("Resources/scenes/GameScene");
+        GameManager.instance.gameState = GameManager.GameState.PLAYING;
     }
 }

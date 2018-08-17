@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
     public static GameManager instance = null;
@@ -37,18 +38,21 @@ public class GameManager : MonoBehaviour {
         gameState = GameState.MENU;
         gameState = GameState.PLAYING;
 
+        panel = GameObject.FindGameObjectWithTag("panel");
         panel.SetActive(false);
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+    /*
+    void Update()
+    {
+        panel = GameObject.FindGameObjectWithTag("panel");    
+    }*/
 
     public float GetScrollSpeed()
     {
         return scrollSpeed;
     }
+
     public bool SetScrollSpeed(float spd)
     {
         if (spd > maxSpeed)
@@ -76,4 +80,5 @@ public class GameManager : MonoBehaviour {
         }
             
     }
+
 }

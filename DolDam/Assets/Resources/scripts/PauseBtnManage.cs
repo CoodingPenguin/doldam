@@ -9,6 +9,7 @@ public class PauseBtnManage : MonoBehaviour {
     public GameObject panel;
 
     public AudioClip btnClicked;
+    public AudioClip startBgm;
 
     public void Resume()
     {
@@ -17,17 +18,21 @@ public class PauseBtnManage : MonoBehaviour {
         GameManager.instance.gameState = GameManager.GameState.PLAYING;
         panel.SetActive(false);
     }
-    /*
+   
     public void Restart()
     {
         SoundManager.instance.PlaySingleForBtn(btnClicked);
         SceneManager.LoadScene("Resources/scenes/GameScene");
+        GameManager.instance.gameState = GameManager.GameState.PLAYING;
+        panel.SetActive(false);
     }
 
     public void MainMenu()
     {
         SoundManager.instance.PlaySingleForBtn(btnClicked);
+        SoundManager.instance.PlayBgm(startBgm, true);
         SceneManager.LoadScene("Resources/scenes/StartScene");
+        panel.SetActive(false);
     }
-    */
+   
 }
