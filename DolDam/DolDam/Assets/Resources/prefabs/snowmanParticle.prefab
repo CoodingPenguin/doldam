@@ -1120,8 +1120,8 @@ ParticleSystem:
           inWeight: 0.33333334
           outWeight: 0.33333334
         - serializedVersion: 3
-          time: 1
-          value: 0.72602844
+          time: 0.98687744
+          value: 0.16810608
           inSlope: -0.20423776
           outSlope: -0.20423776
           tangentMode: 0
@@ -4771,7 +4771,7 @@ ParticleSystemRenderer:
   m_ReflectionProbeUsage: 0
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: d5c1c86b8855f834aa58e8362b64fb6e, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0

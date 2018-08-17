@@ -676,6 +676,7 @@ MonoBehaviour:
   pauseSound1: {fileID: 8300000, guid: 48ab8e59234d3c747913aaed9c2b3596, type: 3}
   pauseSound2: {fileID: 8300000, guid: 4ce0338f17cf9fc4f84e81fcc2d49c96, type: 3}
   panel: {fileID: 852269918}
+  score: 0
 --- !u!1 &814600300
 GameObject:
   m_ObjectHideFlags: 0
@@ -1757,9 +1758,11 @@ MonoBehaviour:
     type: 2}
   feverParticle: {fileID: 1872130839239442, guid: ba0d480a8e54b054cb8c32b80c90d5e2,
     type: 2}
-  crashParticle: {fileID: 1768588464560056, guid: b6521f871348c7145a8607c2d09ba990,
+  rockParticle: {fileID: 1363002717117910, guid: 53a698e593f08b749a81295247f25cd5,
     type: 2}
-  snowmanParticle: {fileID: 1385296381576926, guid: 94e0d73fb1cefb94ba2e25e2145d771b,
+  treeParticle: {fileID: 1814955725953488, guid: cec10645e93e87f4ba47a86f3673ee0c,
+    type: 2}
+  snowmanParticle: {fileID: 1131280699341356, guid: ff9b1a620b49cac44a6e1ec10db64520,
     type: 2}
   bgmSound: {fileID: 8300000, guid: 4c3c2ec2c6ce42a449476cc65bd3403a, type: 3}
   colliSnow1: {fileID: 8300000, guid: 6f3e04e5292e68a47b6297e656001c96, type: 3}

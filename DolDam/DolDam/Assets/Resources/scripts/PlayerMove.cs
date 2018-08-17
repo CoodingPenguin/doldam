@@ -14,6 +14,8 @@ public class PlayerMove : MonoBehaviour
     public float scaleSpeed;
     private int dir;
     private int beforeDir;
+    private float distance;
+
 
     private float width;
     private float ScreenWidth;
@@ -28,7 +30,8 @@ public class PlayerMove : MonoBehaviour
 
     public GameObject SnowParticle;
     public GameObject feverParticle;
-    public GameObject crashParticle;
+    public GameObject rockParticle;
+    public GameObject treeParticle;
     public GameObject snowmanParticle;
 
     public AudioClip bgmSound;
@@ -48,7 +51,7 @@ public class PlayerMove : MonoBehaviour
     void Start()
     {
         isDead = false;
-
+        distance = 0f;
         width = GetComponent<SpriteRenderer>().sprite.rect.width / GetComponent<SpriteRenderer>().sprite.pixelsPerUnit;
  
         ScreenWidth = 10.8f;
@@ -63,7 +66,13 @@ public class PlayerMove : MonoBehaviour
     {
         if (GameManager.instance.gameState == GameManager.GameState.PLAYING)
         {
-            if(isDead)
+            distance += ballScale * rollSpeed * Time.deltaTime;
+            if (distance >= 19.2 / 10)
+            {
+                GameManager.instance.AddScore(50);
+                distance -= 19.2f / 10;
+            }
+            if (isDead)
             {
                 //게임오버
                 //return;
@@ -137,6 +146,7 @@ public class PlayerMove : MonoBehaviour
                             os.HitByPlayer();
                             SetScale(ballScale + snowManScale);
                             Destroy(col.gameObject);
+                            GameManager.instance.AddScore(1000);
                         } 
                         else if (col.tag == "Wall" || col.tag == "Tree")
                         {
@@ -152,9 +162,16 @@ public class PlayerMove : MonoBehaviour
                     {
                         SoundManager.instance.RandomizeSfx(colliFever);
                         os.HitAtFever();
-                        GameObject p = Instantiate(crashParticle, col.transform.position, Quaternion.identity);
-                        p.transform.localScale = p.transform.localScale *2;
+                        GameObject p;
+                        if (col.tag == "Wall")
+                            p = Instantiate(rockParticle, col.transform.position, Quaternion.identity);
+                        else if (col.tag == "Tree")
+                            p = Instantiate(treeParticle, col.transform.position, Quaternion.identity);
+                        else// if (col.tag == "Snowman")
+                            p = Instantiate(snowmanParticle, col.transform.position, Quaternion.identity);
+                        p.transform.localScale = p.transform.localScale * 1.5f;
                         Destroy(p, 2f);
+                        GameManager.instance.AddScore(2000);
                     }
                 }
             }

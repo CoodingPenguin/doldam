@@ -28,17 +28,22 @@ public class GameManager : MonoBehaviour {
 
     public GameObject panel;
 
+    public int score;
+
 	// Use this for initialization
 	void Awake () {
         if (instance == null)
+        {
             instance = this;
+            gameState = GameState.MENU;
+            gameState = GameState.PLAYING;
+            panel = null;
+            score = 0;
+        }
         else if (instance != this)
             Destroy(gameObject);
         //DontDestroyOnLoad(gameObject);
-        gameState = GameState.MENU;
-        gameState = GameState.PLAYING;
         
-        panel = null;
 	}
 
     
@@ -49,6 +54,11 @@ public class GameManager : MonoBehaviour {
             panel = GameObject.FindGameObjectWithTag("panel");
             panel.SetActive(false);
         }
+    }
+
+    public void AddScore(int plus)
+    {
+        score += plus;
     }
 
     public float GetScrollSpeed()
