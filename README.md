@@ -46,3 +46,8 @@ Dol.apk 가 실행파일입니다
 4. 일시정지 버튼을 눌렀을 때 Resume의 경우 GameManager의 GameState를 사용해서 다시 시작하도록 함.
 하지만 Restart와 MainMenu 버튼의 경우 단순히 LoadScene으로 할 경우 GameManager와 SoundManager가 초기화가 안 되서 게임에서 오류 발생.
 (금요일 까지 수정예정)
+
+
+20180817 15:16 박소현
+1. 일시정지 버튼 누르고 Resume과 Main Menu 버튼을 눌렀을 때 게임이 실행되지 않는 문제 해결
+2. LoadScene을 한 뒤에 Game Manager가 panel을 찾지 못하는 문제 발생
