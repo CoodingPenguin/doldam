@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
     public static GameManager instance = null;
@@ -26,9 +27,11 @@ public class GameManager : MonoBehaviour {
     public AudioClip pauseSound1;
     public AudioClip pauseSound2;
 
-    public GameObject panel;
+    public GameObject pausePanel;
+    public GameObject gameOverPanel;
 
     public int score;
+    public Text scoreText;
 
 	// Use this for initialization
 	void Awake () {
@@ -37,7 +40,8 @@ public class GameManager : MonoBehaviour {
             instance = this;
             gameState = GameState.MENU;
             gameState = GameState.PLAYING;
-            panel = null;
+            pausePanel = null;
+            gameOverPanel = null;
             score = 0;
         }
         else if (instance != this)
@@ -49,16 +53,19 @@ public class GameManager : MonoBehaviour {
     
     void Update()
     {
-        if (panel == null)
+        if (pausePanel == null)
         {
-            panel = GameObject.FindGameObjectWithTag("panel");
-            panel.SetActive(false);
+            pausePanel = GameObject.FindGameObjectWithTag("panel");
+            gameOverPanel = GameObject.FindGameObjectWithTag("gameOver");
+            pausePanel.SetActive(false);
+            gameOverPanel.SetActive(false);
         }
     }
 
     public void AddScore(int plus)
     {
         score += plus;
+        scoreText.text = score.ToString();
     }
 
     public float GetScrollSpeed()
@@ -82,14 +89,14 @@ public class GameManager : MonoBehaviour {
             SoundManager.instance.bgmSource.Pause();
             SoundManager.instance.PlaySingleForBtn(pauseSound1);
             gameState = GameState.PAUSED;
-            panel.SetActive(true);
+            pausePanel.SetActive(true);
         }
         else if (gameState == GameState.PAUSED)
         {
             SoundManager.instance.bgmSource.Play();
             SoundManager.instance.PlaySingleForBtn(pauseSound2);
             gameState = GameState.PLAYING;
-            panel.SetActive(false);
+            pausePanel.SetActive(false);
         }
             
     }

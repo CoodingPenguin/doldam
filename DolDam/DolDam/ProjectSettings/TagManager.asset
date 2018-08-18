@@ -9,6 +9,8 @@ TagManager:
   - Wall
   - panel
   - Tree
+  - gameOver
+  - finalScore
   layers:
   - Default
   - TransparentFX

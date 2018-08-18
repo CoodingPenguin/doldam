@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class PauseBtnManage : MonoBehaviour {
 
-    public GameObject panel;
+    public GameObject pausePanel;
 
     public AudioClip btnClicked;
     public AudioClip startBgm;
@@ -16,7 +16,7 @@ public class PauseBtnManage : MonoBehaviour {
         SoundManager.instance.bgmSource.Play();
         SoundManager.instance.PlaySingleForBtn(btnClicked);
         GameManager.instance.gameState = GameManager.GameState.PLAYING;
-        panel.SetActive(false);
+        pausePanel.SetActive(false);
     }
    
     public void Restart()
@@ -24,7 +24,8 @@ public class PauseBtnManage : MonoBehaviour {
         SoundManager.instance.PlaySingleForBtn(btnClicked);
         SceneManager.LoadScene("Resources/scenes/GameScene");
         GameManager.instance.gameState = GameManager.GameState.PLAYING;
-        panel.SetActive(false);
+        pausePanel.SetActive(false);
+        SoundManager.instance.bgmSource.Play();
     }
 
     public void MainMenu()
@@ -32,7 +33,7 @@ public class PauseBtnManage : MonoBehaviour {
         SoundManager.instance.PlaySingleForBtn(btnClicked);
         SoundManager.instance.PlayBgm(startBgm, true);
         SceneManager.LoadScene("Resources/scenes/StartScene");
-        panel.SetActive(false);
+        pausePanel.SetActive(false);
     }
    
 }

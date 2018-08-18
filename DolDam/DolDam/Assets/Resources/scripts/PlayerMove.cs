@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class PlayerMove : MonoBehaviour
 {
@@ -45,6 +46,10 @@ public class PlayerMove : MonoBehaviour
     public AudioClip colliFever;
     public AudioClip feverStart;
     public AudioClip feverEnd;
+    public AudioClip gameOverBgm;
+
+    public GameObject gameOverPanel;
+    public Text finalScore;
 
 
     // Use this for initialization
@@ -74,9 +79,15 @@ public class PlayerMove : MonoBehaviour
             }
             if (isDead)
             {
-                //게임오버
-                //return;
-
+                Debug.Log("게임오버");
+                if(GameManager.instance.gameState == GameManager.GameState.PLAYING)
+                {
+                    GameManager.instance.gameState = GameManager.GameState.PAUSED;
+                    SoundManager.instance.bgmSource.Stop();
+                    SoundManager.instance.PlayBgm(gameOverBgm, false);
+                    gameOverPanel.SetActive(true);
+                    finalScore.text = "Score : " + GameManager.instance.score;
+                }
             }
             GameManager.instance.SetScrollSpeed(ballScale * rollSpeed);
             if (GameManager.instance.feverState == 0) //평상시
@@ -146,7 +157,7 @@ public class PlayerMove : MonoBehaviour
                             os.HitByPlayer();
                             SetScale(ballScale + snowManScale);
                             Destroy(col.gameObject);
-                            GameManager.instance.AddScore(1000);
+                            GameManager.instance.AddScore(1000);    // 1000점
                         } 
                         else if (col.tag == "Wall" || col.tag == "Tree")
                         {
@@ -171,7 +182,7 @@ public class PlayerMove : MonoBehaviour
                             p = Instantiate(snowmanParticle, col.transform.position, Quaternion.identity);
                         p.transform.localScale = p.transform.localScale * 1.5f;
                         Destroy(p, 2f);
-                        GameManager.instance.AddScore(2000);
+                        GameManager.instance.AddScore(2000);    // 2000점
                     }
                 }
             }
