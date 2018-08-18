@@ -47,9 +47,11 @@ public class PlayerMove : MonoBehaviour
     public AudioClip feverStart;
     public AudioClip feverEnd;
     public AudioClip gameOverBgm;
+    public AudioClip congratulateBgm;
 
     public GameObject gameOverPanel;
     public Text finalScore;
+    public Text bestScore;
 
 
     // Use this for initialization
@@ -84,9 +86,18 @@ public class PlayerMove : MonoBehaviour
                 {
                     GameManager.instance.gameState = GameManager.GameState.PAUSED;
                     SoundManager.instance.bgmSource.Stop();
-                    SoundManager.instance.PlayBgm(gameOverBgm, false);
                     gameOverPanel.SetActive(true);
-                    finalScore.text = "Score : " + GameManager.instance.score;
+                    finalScore.text = GameManager.instance.score.ToString();
+                    if(GameManager.instance.score > PlayerPrefs.GetInt("BestScore", 0))
+                    {
+                        SoundManager.instance.PlayBgm(congratulateBgm, false);
+                        PlayerPrefs.SetInt("BestScore", GameManager.instance.score);
+                        PlayerPrefs.Save();
+                    } else
+                    {
+                        SoundManager.instance.PlayBgm(gameOverBgm, false);
+                    }
+                    bestScore.text = PlayerPrefs.GetInt("BestScore").ToString();
                 }
             }
             GameManager.instance.SetScrollSpeed(ballScale * rollSpeed);

@@ -26,4 +26,10 @@ public class SetUpControl : MonoBehaviour {
         SoundManager.instance.efxSource.volume = efxSlider.value * 0.1f;
         SoundManager.instance.PlaySingle(exClip);
     }
+
+    public void ScoreInitialization()
+    {
+        SoundManager.instance.PlaySingleForBtn(exClip);
+        PlayerPrefs.DeleteKey("BestScore");
+    }
 }
