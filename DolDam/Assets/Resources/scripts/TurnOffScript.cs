@@ -6,6 +6,7 @@ public class TurnOffScript : MonoBehaviour {
 
     public GameObject turnOffPanel;
     public AudioClip btnSound;
+    public AudioClip popUpSound;
 	
 	void Start () {
         turnOffPanel = GameObject.FindGameObjectWithTag("TurnOff");
@@ -18,6 +19,7 @@ public class TurnOffScript : MonoBehaviour {
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
+                SoundManager.instance.PlaySingleForBtn(popUpSound);
                 turnOffPanel.SetActive(true);
             }
         }

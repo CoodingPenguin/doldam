@@ -1,6 +1,6 @@
 Android
 PlayerPath?
-D:/이영진/GitProjects/DolDam/RockyDownhill.apk
+C:/Users/round/OneDrive/문서/DolDam1/Rocky DownHill.apk
 SceneListBegin?
 Assets/Resources/scenes/StartScene.unity
 Assets/Resources/scenes/GameScene.unity
@@ -125,6 +125,7 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.Spa
 6690d6cc15fa00daaacd3dc4eddd53a1 Assembly-CSharp.dll:.PauseBtnManage
 8abb3970bbcecd7e1617f5874245652b Assembly-CSharp.dll:.SoundManager
 b27b9ffbbf06f08aa0eb69d2e9135f2c Assembly-CSharp.dll:.GameManager
+df665fdd2f058c927783cfd824f7d030 Assembly-CSharp.dll:.TurnOffScript
 fc1e0f4d8439d9928083474691511a13 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Networking.dll:UnityEngine.Networking.NetworkBehaviour
 60b2bb652410a5867a5ab9a01cd38461 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkDiscovery

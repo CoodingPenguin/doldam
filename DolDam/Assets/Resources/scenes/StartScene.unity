@@ -2069,6 +2069,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turnOffPanel: {fileID: 0}
   btnSound: {fileID: 8300000, guid: 6e90db1850dd8f14fb329f70c87b897e, type: 3}
+  popUpSound: {fileID: 8300000, guid: 53bcd5fcb5de65a40b1bf655c1612d61, type: 3}
 --- !u!1 &1924409203
 GameObject:
   m_ObjectHideFlags: 0
