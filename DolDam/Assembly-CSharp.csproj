@@ -75,6 +75,7 @@
     <Compile Include="Assets\Resources\scripts\SoundManager.cs" />
     <Compile Include="Assets\Resources\scripts\SpawnObject.cs" />
     <Compile Include="Assets\Resources\scripts\TextBlink.cs" />
+    <Compile Include="Assets\Resources\scripts\TurnOffScript.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/round/OneDrive/문서/DolDam1/DolDam/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>

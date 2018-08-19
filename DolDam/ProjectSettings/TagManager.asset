@@ -13,6 +13,7 @@ TagManager:
   - finalScore
   - bestScore
   - SideWall
+  - TurnOff
   layers:
   - Default
   - TransparentFX
