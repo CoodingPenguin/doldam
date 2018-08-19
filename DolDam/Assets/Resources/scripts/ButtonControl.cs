@@ -33,8 +33,4 @@ public class ButtonControl : MonoBehaviour {
         GameManager.instance.gameState = GameManager.GameState.PLAYING;
     }
 
-    public void YesButtonOnClicked()
-    {
-        Application.Quit();
-    }
 }
