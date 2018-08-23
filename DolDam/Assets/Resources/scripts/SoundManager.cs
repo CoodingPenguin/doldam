@@ -21,6 +21,8 @@ public class SoundManager : MonoBehaviour {
         if (instance == null) instance = this;
         else if (instance != this) Destroy(gameObject);
         DontDestroyOnLoad(gameObject);
+
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
     }
 
     public void PlaySingle(AudioClip clip)
