@@ -136,6 +136,8 @@ public class PlayerMove : MonoBehaviour
             }
             else if (GameManager.instance.feverState == 2) //피버모드
             {
+                if (GameManager.instance.score > 300000) feverDuration = 2.0f;
+                else if (GameManager.instance.score > 500000) feverDuration = 1.5f;
                 MoveAndRotate();
                 SetScale(scaleAtFever);
                 feverETime += Time.deltaTime;

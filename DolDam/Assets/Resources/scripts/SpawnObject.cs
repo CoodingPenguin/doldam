@@ -10,6 +10,8 @@ public class SpawnObject : MonoBehaviour {
     public GameObject tree;
     public GameObject snowman;
     public bool isSnowTurn;
+    private bool isSnowTurnFirst;
+    private bool isSnowTurnSecond;
 
     private float screenWidth;
     private float screenHeight;
@@ -38,11 +40,26 @@ public class SpawnObject : MonoBehaviour {
                     float r = Random.Range(0f, 1f);
                     if (r < 0.5)
                         SpawnObstacle(wall);
-                    else
+                    else 
                         SpawnObstacle(tree);
                 }
-                objectEdis -= objectspawn;
-                isSnowTurn = !isSnowTurn;
+                float g = Random.Range(0.8f, 1.2f);
+                if (GameManager.instance.score > 100000) g = Random.Range(0.5f, 1.2f);
+                else if (GameManager.instance.score > 300000) g = Random.Range(0.5f, 0.8f);
+                else if (GameManager.instance.score > 500000) g = Random.Range(0.6f, 1.0f);
+
+                objectEdis -= objectspawn * g;
+
+                isSnowTurnFirst = isSnowTurnSecond;
+                isSnowTurnSecond = isSnowTurn;
+                
+                if(GameManager.instance.score > 300000)
+                {
+                    if (isSnowTurnFirst == true && isSnowTurnSecond == false) isSnowTurn = false;
+                    else if (isSnowTurnFirst == false && isSnowTurnSecond == true) isSnowTurn = false;
+                    else if (isSnowTurnFirst == false && isSnowTurnSecond == false) isSnowTurn = true;
+                } else
+                    isSnowTurn = !isSnowTurn;
             }
         }
 	}

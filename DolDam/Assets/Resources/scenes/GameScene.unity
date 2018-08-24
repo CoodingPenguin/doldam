@@ -2945,7 +2945,7 @@ MonoBehaviour:
   ballScale: 5
   minScale: 4
   scaleSpeed: 0.5
-  feverDuration: 4
+  feverDuration: 3.5
   scaleAtFever: 25
   goToFeverScale: 14
   snowManScale: 1
